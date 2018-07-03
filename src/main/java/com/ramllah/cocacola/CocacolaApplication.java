@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 
 @SpringBootApplication
 @Configuration
-@ComponentScan({"com.ramllah.cocacola.application.user"})
+@ComponentScan({"com.ramllah.cocacola.application.user","com.ramllah.cocacola.application.product"})
 public class CocacolaApplication {
 
     public static void main(String[] args) {
