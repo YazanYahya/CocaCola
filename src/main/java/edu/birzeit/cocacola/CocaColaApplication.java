@@ -1,4 +1,4 @@
-package com.ramllah.cocacola;
+package edu.birzeit.cocacola;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -7,10 +7,10 @@ import org.springframework.context.annotation.Configuration;
 
 @SpringBootApplication
 @Configuration
-@ComponentScan({"com.ramllah.cocacola.application.user","com.ramllah.cocacola.application.product"})
-public class CocacolaApplication {
+@ComponentScan({"edu.birzeit.cocacola.application.*"})
+public class CocaColaApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(CocacolaApplication.class, args);
+        SpringApplication.run(CocaColaApplication.class, args);
     }
 }

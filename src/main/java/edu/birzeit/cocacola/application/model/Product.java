@@ -1,4 +1,4 @@
-package com.ramllah.cocacola.application.product;
+package edu.birzeit.cocacola.application.model;
 
 import javax.persistence.*;
 

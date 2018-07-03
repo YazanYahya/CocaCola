@@ -1,7 +1,9 @@
-package com.ramllah.cocacola.application.user;
+package edu.birzeit.cocacola.application.controller;
 
 import java.util.List;
 
+import edu.birzeit.cocacola.application.model.User;
+import edu.birzeit.cocacola.application.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

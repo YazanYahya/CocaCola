@@ -1,4 +1,4 @@
-package com.ramllah.cocacola.application.user;
+package edu.birzeit.cocacola.application.model;
 
 import java.util.Arrays;
 import javax.persistence.*;

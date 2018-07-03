@@ -1,5 +1,6 @@
-package com.ramllah.cocacola.application.product;
+package edu.birzeit.cocacola.application.repository;
 
+import edu.birzeit.cocacola.application.model.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
