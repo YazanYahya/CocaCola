@@ -17,17 +17,27 @@ import java.util.List;
 public class GitController {
 
     @RequestMapping(value = "/pull")
-    public void refreshGit() {
-
-        ProcessBuilder processBuilder = new ProcessBuilder("cmd.exe", "git pull");
+    public String refreshGit() {
+        String result = null;
+        ProcessBuilder processBuilder = new ProcessBuilder("cmd.exe", "/c", "git pull");
         processBuilder.redirectErrorStream(true);
         processBuilder.directory(new File("C:\\Users\\dell\\Desktop\\CocaCola\\CocaCola"));
         try {
-            processBuilder.start();
+            Process process = processBuilder.start();
+            BufferedReader inStreamReader = new BufferedReader(
+                    new InputStreamReader(process.getInputStream()));
+            String line = inStreamReader.readLine();
+            while(line != null){
+                if(result == null)
+                    result = line;
+                else
+                    result += line;
+                line = inStreamReader.readLine();
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+        return result;
 
     }
 
