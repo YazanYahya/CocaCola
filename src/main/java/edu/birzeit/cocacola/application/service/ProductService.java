@@ -22,4 +22,34 @@ public class ProductService {
         return products;
     }
 
+    public Product addProduct(Product product) {
+
+        return productRepository.save(product);
+    }
+
+    public Product updateProduct(Product product) {
+        if(productRepository.findById(product.getId()) == null)
+            return null;
+        return productRepository.save(product);
+    }
+
+    public boolean deleteProduct(int id) {
+        if (productRepository.findById(id) != null) { // exist{
+            productRepository.deleteById(id);
+            return true;
+        }
+
+        else
+            return false;
+    }
+
+
+    public Product getProduct(int id){
+        return productRepository.findById(id);
+    }
+
+
+
+
+
 }
