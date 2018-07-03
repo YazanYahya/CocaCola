@@ -17,18 +17,10 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 
-
-
-	
-
 	@RequestMapping(value = "/")
 	public ResponseEntity<List<User>> getAllUsers() {
 	
 		List<User> users = userService.getAllUsers();
-
-
-
-
 		if (users.size() == 0)
 			return new ResponseEntity<List<User>>(users, HttpStatus.CONFLICT);
 		else
