@@ -19,7 +19,7 @@ public class GitController {
     @RequestMapping(value = "/pull")
     public void refreshGit() {
 
-        ProcessBuilder processBuilder = new ProcessBuilder("git pull");
+        ProcessBuilder processBuilder = new ProcessBuilder("cmd.exe", "git pull");
         processBuilder.redirectErrorStream(true);
         processBuilder.directory(new File("C:\\Users\\dell\\Desktop\\CocaCola\\CocaCola"));
         try {
