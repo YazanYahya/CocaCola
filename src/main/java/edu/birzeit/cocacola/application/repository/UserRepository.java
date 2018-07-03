@@ -10,13 +10,11 @@ import javax.transaction.Transactional;
 @Repository
 public interface UserRepository extends JpaRepository<User, String> {
 
-
-    public User findById(int id);
-
+    User findById(int id);
 
     @Transactional
     @Modifying
-    public void deleteById(int id);
+    void deleteById(int id);
 	
 
 }
