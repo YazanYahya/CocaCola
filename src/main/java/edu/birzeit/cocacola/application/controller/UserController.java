@@ -22,6 +22,9 @@ public class UserController {
 	
 		List<User> users = userService.getAllUsers();
 
+
+		
+
 		if (users.size() == 0)
 			return new ResponseEntity<List<User>>(users, HttpStatus.CONFLICT);
 		else
