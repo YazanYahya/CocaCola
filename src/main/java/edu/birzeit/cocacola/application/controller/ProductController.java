@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/coca-cola")
+@RequestMapping("/coca-cola/products")
 public class ProductController {
 
     @Autowired
     private ProductService productService;
 
-    @RequestMapping(value = "/products")
+    @RequestMapping(value = "/")
     public ResponseEntity<List<Product>> getAllProducts() {
 
         List<Product> products = productService.getAllProducts();

@@ -11,13 +11,13 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController
-@RequestMapping("/coca-cola")
+@RequestMapping("/coca-cola/users")
 public class UserController {
 
 	@Autowired
 	private UserService userService;
 
-	@RequestMapping(value = "/users")
+	@RequestMapping(value = "/")
 	public ResponseEntity<List<User>> getAllUsers() {
 	
 		List<User> users = userService.getAllUsers();
@@ -30,7 +30,7 @@ public class UserController {
 	}
 
 
-	@RequestMapping(value = "/users/{id}")
+	@RequestMapping(value = "/{id}")
 	public ResponseEntity<User> getUserByID(@PathVariable int id) {
 		User user = userService.getUser(id);
 
@@ -43,7 +43,7 @@ public class UserController {
 
 
 
-	@RequestMapping(method = RequestMethod.POST, value = "/users")
+	@RequestMapping(method = RequestMethod.POST, value = "/")
 	public ResponseEntity<User> addUser(@RequestBody User user) {
 		User u = userService.addUser(user);
 		if (u == null)
@@ -54,18 +54,19 @@ public class UserController {
 	}
 
 
-	@RequestMapping(method = RequestMethod.PUT, value = "/users")
-	public ResponseEntity<User> updateUser(@RequestBody User user) {
+	@RequestMapping(method = RequestMethod.PUT, value = "/{id}")
+	public ResponseEntity<User> updateUser(@RequestBody User user, @PathVariable int id) {
+		user.setId(id);
 
 		User u = userService.updateUser(user);
 		if (u == null)
-			return new ResponseEntity<User>(u, HttpStatus.CONFLICT);
+			return new ResponseEntity<User>(u, HttpStatus.NOT_FOUND);
 		else
 			return new ResponseEntity<User>(u, HttpStatus.OK);
 
 	}
 
-	@RequestMapping(method = RequestMethod.DELETE, value = "/users/{id}")
+	@RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
 	public ResponseEntity<?> deleteUser(@PathVariable int id) {
 
 		if (userService.deleteUser(id))

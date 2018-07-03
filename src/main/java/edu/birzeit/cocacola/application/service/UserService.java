@@ -29,12 +29,12 @@ public class UserService {
     }
 
     public User updateUser(User user) {
-
+            if(userRepository.findById(user.getId()) == null)
+                return null;
             return userRepository.save(user);
     }
 
     public boolean deleteUser(int id) {
-
         if (userRepository.findById(id) != null) { // exist{
             userRepository.deleteById(id);
             return true;
