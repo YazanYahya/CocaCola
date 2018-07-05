@@ -21,20 +21,24 @@ public class User {
     private String address;
     private String image;
 
-    @JsonIgnore
+
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Phone> phones;
 
-    @JsonIgnore
+
     @OneToOne(mappedBy = "user")
+    @JsonIgnore
     private Credential credential;
 
-    @JsonIgnore
+
     @OneToMany(mappedBy = "user_truck_driver", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Truck_Order> truck_orders;
 
-    @JsonIgnore
+
     @OneToMany(mappedBy = "user_lori", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Truck_Order> lori_served_orders;
 
 
