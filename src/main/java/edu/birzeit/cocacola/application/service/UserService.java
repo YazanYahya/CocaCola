@@ -11,41 +11,40 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserService {
 
-	@Autowired
-	private UserRepository userRepository;
+    @Autowired
+    private UserRepository userRepository;
 
-	public List<User> getAllUsers() {
+    public List<User> getAllUsers() {
 
-		List<User> users = new ArrayList<>();
+        List<User> users = new ArrayList<>();
 
-		userRepository.findAll().forEach(users::add);
-		return users;
-	}
+        userRepository.findAll().forEach(users::add);
+        return users;
+    }
 
 
     public User addUser(User user) {
 
-            return userRepository.save(user);
+
+        return userRepository.save(user);
     }
 
     public User updateUser(User user) {
-            if(userRepository.findById(user.getId()) == null)
-                return null;
-            return userRepository.save(user);
+        if (userRepository.findById(user.getId()) == null)
+            return null;
+        return userRepository.save(user);
     }
 
     public boolean deleteUser(int id) {
         if (userRepository.findById(id) != null) { // exist{
             userRepository.deleteById(id);
             return true;
-        }
-
-        else
+        } else
             return false;
     }
 
 
-    public User getUser(int id){
+    public User getUser(int id) {
         return userRepository.findById(id);
     }
 

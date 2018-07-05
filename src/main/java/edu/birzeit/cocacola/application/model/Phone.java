@@ -4,7 +4,7 @@ package edu.birzeit.cocacola.application.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name="phones")
+@Table(name = "phones")
 public class Phone {
 
 
@@ -12,14 +12,16 @@ public class Phone {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-
-    private int userid;
     private String number;
 
-    public Phone(){}
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
-    public Phone(int userid, String number) {
-        this.userid = userid;
+    public Phone() {
+    }
+
+    public Phone(String number) {
         this.number = number;
     }
 
@@ -31,14 +33,6 @@ public class Phone {
         this.id = id;
     }
 
-    public int getUserid() {
-        return userid;
-    }
-
-    public void setUserid(int userid) {
-        this.userid = userid;
-    }
-
     public String getNumber() {
         return number;
     }
@@ -47,12 +41,20 @@ public class Phone {
         this.number = number;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     @Override
     public String toString() {
         return "Phone{" +
                 "id=" + id +
-                ", userid=" + userid +
                 ", number='" + number + '\'' +
+                ", user=" + user +
                 '}';
     }
 }
