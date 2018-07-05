@@ -21,7 +21,7 @@ public class User {
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     @JsonIgnore
-    public List<Phone> phones;
+    private List<Phone> phones;
 
 
     @OneToOne(mappedBy = "user")
