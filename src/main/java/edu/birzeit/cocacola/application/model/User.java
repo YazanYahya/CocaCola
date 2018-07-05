@@ -20,22 +20,18 @@ public class User {
 
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    @JsonIgnore
     private List<Phone> phones;
 
 
     @OneToOne(mappedBy = "user")
-    @JsonIgnore
     private Credential credential;
 
 
     @OneToMany(mappedBy = "user_truck_driver", cascade = CascadeType.ALL)
-    @JsonIgnore
     private List<Truck_Order> truck_orders;
 
 
     @OneToMany(mappedBy = "user_lori", cascade = CascadeType.ALL)
-    @JsonIgnore
     private List<Truck_Order> lori_served_orders;
 
 
@@ -89,6 +85,7 @@ public class User {
         this.image = image;
     }
 
+    @JsonIgnore
     public List<Phone> getPhones() {
         return phones;
     }
@@ -97,6 +94,7 @@ public class User {
         this.phones = phones;
     }
 
+    @JsonIgnore
     public Credential getCredential() {
         return credential;
     }
@@ -105,6 +103,7 @@ public class User {
         this.credential = credential;
     }
 
+    @JsonIgnore
     public List<Truck_Order> getTruck_orders() {
         return truck_orders;
     }
@@ -113,6 +112,7 @@ public class User {
         this.truck_orders = truck_orders;
     }
 
+    @JsonIgnore
     public List<Truck_Order> getLori_served_orders() {
         return lori_served_orders;
     }
