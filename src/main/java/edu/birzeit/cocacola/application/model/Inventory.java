@@ -15,7 +15,10 @@ public class Inventory {
 
     private int quantity;
 
+
+
     @OneToMany(mappedBy = "inventory", cascade = CascadeType.ALL)
+    @JoinColumn(name = "product_id")
     private List<Product> products;
 
     public Inventory() {

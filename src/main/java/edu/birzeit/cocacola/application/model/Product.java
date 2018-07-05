@@ -19,7 +19,6 @@ public class Product {
     private int items_per_box;
 
     @ManyToOne
-    @JoinColumn(name = "inventory_id")
     private Inventory inventory;
 
 
