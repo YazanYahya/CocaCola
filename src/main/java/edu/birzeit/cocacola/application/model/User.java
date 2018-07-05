@@ -20,7 +20,8 @@ public class User {
 
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Phone> phones;
+    @JsonIgnore
+    public List<Phone> phones;
 
 
     @OneToOne(mappedBy = "user")
@@ -88,7 +89,6 @@ public class User {
         this.image = image;
     }
 
-    @JsonIgnore
     public List<Phone> getPhones() {
         return phones;
     }
