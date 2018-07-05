@@ -1,5 +1,6 @@
 package edu.birzeit.cocacola.application.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.apache.catalina.LifecycleState;
 
 import java.util.Arrays;
@@ -20,17 +21,19 @@ public class User {
     private String address;
     private String image;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Phone> phones;
 
+    @JsonIgnore
     @OneToOne(mappedBy = "user")
     private Credential credential;
 
-
+    @JsonIgnore
     @OneToMany(mappedBy = "user_truck_driver", cascade = CascadeType.ALL)
     private List<Truck_Order> truck_orders;
 
-
+    @JsonIgnore
     @OneToMany(mappedBy = "user_lori", cascade = CascadeType.ALL)
     private List<Truck_Order> lori_served_orders;
 
