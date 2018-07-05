@@ -3,7 +3,7 @@ package edu.birzeit.cocacola.application.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name="products")
+@Table(name = "products")
 public class Product {
 
 
@@ -14,20 +14,30 @@ public class Product {
     private String description;
     private String qrcode;
     private String category;
+    private String image;
     private double price;
     private int items_per_box;
 
-    public Product(){}
+    @ManyToOne
+    @JoinColumn(name = "inventory_id")
+    private Inventory inventory;
 
-    public Product(int id, String description, String qrcode, String category, double price, int items_per_box) {
-        this.id = id;
+
+    @OneToOne(mappedBy = "product")
+    private Order_Detail order_detail;
+
+
+    public Product() {
+    }
+
+    public Product(String description, String qrcode, String category, String image, double price, int items_per_box) {
         this.description = description;
         this.qrcode = qrcode;
         this.category = category;
+        this.image = image;
         this.price = price;
-        this.items_per_box= items_per_box;
+        this.items_per_box = items_per_box;
     }
-
 
     public int getId() {
         return id;
@@ -61,6 +71,14 @@ public class Product {
         this.category = category;
     }
 
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
     public double getPrice() {
         return price;
     }
@@ -69,12 +87,28 @@ public class Product {
         this.price = price;
     }
 
-    public int getItem_per_box() {
+    public int getItems_per_box() {
         return items_per_box;
     }
 
-    public void setItem_per_box(int item_per_box) {
-        this.items_per_box = item_per_box;
+    public void setItems_per_box(int items_per_box) {
+        this.items_per_box = items_per_box;
+    }
+
+    public Inventory getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(Inventory inventory) {
+        this.inventory = inventory;
+    }
+
+    public Order_Detail getOrder_detail() {
+        return order_detail;
+    }
+
+    public void setOrder_detail(Order_Detail order_detail) {
+        this.order_detail = order_detail;
     }
 
     @Override
@@ -84,8 +118,11 @@ public class Product {
                 ", description='" + description + '\'' +
                 ", qrcode='" + qrcode + '\'' +
                 ", category='" + category + '\'' +
+                ", image='" + image + '\'' +
                 ", price=" + price +
-                ", item_per_box=" + items_per_box +
+                ", items_per_box=" + items_per_box +
+                ", inventory=" + inventory +
+                ", order_detail=" + order_detail +
                 '}';
     }
 }
