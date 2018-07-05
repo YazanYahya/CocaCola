@@ -1,6 +1,8 @@
 package edu.birzeit.cocacola.application.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -14,7 +16,6 @@ public class Inventory {
     private int id;
 
     private int quantity;
-
 
 
     @OneToOne
@@ -45,6 +46,7 @@ public class Inventory {
         this.quantity = quantity;
     }
 
+    @JsonIgnore
     public Product getProduct() {
         return product;
     }

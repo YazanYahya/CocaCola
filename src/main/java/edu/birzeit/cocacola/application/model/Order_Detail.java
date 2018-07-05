@@ -1,5 +1,7 @@
 package edu.birzeit.cocacola.application.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -46,6 +48,7 @@ public class Order_Detail {
         this.quantity = quantity;
     }
 
+    @JsonIgnore
     public Truck_Order getTruck_order() {
         return truck_order;
     }
@@ -54,6 +57,7 @@ public class Order_Detail {
         this.truck_order = truck_order;
     }
 
+    @JsonIgnore
     public Product getProduct() {
         return product;
     }

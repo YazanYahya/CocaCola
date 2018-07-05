@@ -1,6 +1,8 @@
 package edu.birzeit.cocacola.application.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -46,6 +48,7 @@ public class Truck_Order {
         this.id = id;
     }
 
+    @JsonIgnore
     public User getUser_truck_driver() {
         return user_truck_driver;
     }
@@ -54,6 +57,7 @@ public class Truck_Order {
         this.user_truck_driver = user_truck_driver;
     }
 
+    @JsonIgnore
     public User getUser_lori() {
         return user_lori;
     }
@@ -78,6 +82,7 @@ public class Truck_Order {
         this.notes = notes;
     }
 
+    @JsonIgnore
     public List<Order_Detail> getOrder_details() {
         return order_details;
     }

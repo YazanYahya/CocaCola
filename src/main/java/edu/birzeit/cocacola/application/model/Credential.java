@@ -1,6 +1,8 @@
 package edu.birzeit.cocacola.application.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -53,6 +55,7 @@ public class Credential {
         this.password = password;
     }
 
+    @JsonIgnore
     public User getUser() {
         return user;
     }

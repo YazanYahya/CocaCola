@@ -1,5 +1,7 @@
 package edu.birzeit.cocacola.application.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -94,6 +96,7 @@ public class Product {
         this.items_per_box = items_per_box;
     }
 
+    @JsonIgnore
     public Inventory getInventory() {
         return inventory;
     }
@@ -102,6 +105,7 @@ public class Product {
         this.inventory = inventory;
     }
 
+    @JsonIgnore
     public Order_Detail getOrder_detail() {
         return order_detail;
     }
