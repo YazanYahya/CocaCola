@@ -1,9 +1,6 @@
 package edu.birzeit.cocacola.application.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.apache.catalina.LifecycleState;
-
-import java.util.Arrays;
 import java.util.List;
 import javax.persistence.*;
 
