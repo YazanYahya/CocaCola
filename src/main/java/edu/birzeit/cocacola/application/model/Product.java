@@ -18,7 +18,7 @@ public class Product {
     private double price;
     private int items_per_box;
 
-    @ManyToOne
+    @OneToOne(mappedBy = "product", cascade = CascadeType.ALL)
     private Inventory inventory;
 
 

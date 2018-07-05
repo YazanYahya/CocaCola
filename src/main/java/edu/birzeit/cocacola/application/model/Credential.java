@@ -11,8 +11,7 @@ public class Credential {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @Column(unique = true)
-    private String usernaem;
+    private String username;
 
     private String password;
 
@@ -24,8 +23,8 @@ public class Credential {
     public Credential() {
     }
 
-    public Credential(String usernaem, String password) {
-        this.usernaem = usernaem;
+    public Credential(String username, String password) {
+        this.username = username;
         this.password = password;
         this.user = user;
     }
@@ -38,12 +37,12 @@ public class Credential {
         this.id = id;
     }
 
-    public String getUsernaem() {
-        return usernaem;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUsernaem(String usernaem) {
-        this.usernaem = usernaem;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -66,7 +65,7 @@ public class Credential {
     public String toString() {
         return "Credential{" +
                 "id=" + id +
-                ", usernaem='" + usernaem + '\'' +
+                ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", user=" + user +
                 '}';

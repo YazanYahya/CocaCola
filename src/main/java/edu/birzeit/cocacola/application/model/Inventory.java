@@ -17,16 +17,15 @@ public class Inventory {
 
 
 
-    @OneToMany(mappedBy = "inventory", cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "product_id")
-    private List<Product> products;
+    private Product product;
 
     public Inventory() {
     }
 
     public Inventory(int quantity) {
         this.quantity = quantity;
-        this.products = products;
     }
 
 
@@ -46,12 +45,12 @@ public class Inventory {
         this.quantity = quantity;
     }
 
-    public List<Product> getProducts() {
-        return products;
+    public Product getProduct() {
+        return product;
     }
 
-    public void setProducts(List<Product> products) {
-        this.products = products;
+    public void setProducts(Product product) {
+        this.product = product;
     }
 
 
@@ -60,7 +59,7 @@ public class Inventory {
         return "Inventory{" +
                 "id=" + id +
                 ", quantity=" + quantity +
-                ", products=" + products +
+                ", product=" + product +
                 '}';
     }
 }
