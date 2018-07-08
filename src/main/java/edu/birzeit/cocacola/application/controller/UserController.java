@@ -1,6 +1,8 @@
 package edu.birzeit.cocacola.application.controller;
 
 import java.util.List;
+
+import edu.birzeit.cocacola.application.model.Phone;
 import edu.birzeit.cocacola.application.model.User;
 import edu.birzeit.cocacola.application.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,15 +19,16 @@ public class UserController {
     private UserService userService;
 
 
-    @RequestMapping(value = "/",method= RequestMethod.GET)
+    @RequestMapping(value = "/ok")
     public ResponseEntity<List<User>> getAllUsers() {
         List<User> users = userService.getAllUsers();
 
-        if (users.size()!=0)
+        if (users.size() != 0)
             return new ResponseEntity<List<User>>(users, HttpStatus.OK);
         else
             return new ResponseEntity<List<User>>(users, HttpStatus.CONFLICT);
     }
+
 
     @RequestMapping(value = "/{id}")
     public ResponseEntity<User> getUserByID(@PathVariable int id) {
