@@ -1,7 +1,6 @@
 package edu.birzeit.cocacola.application.controller;
 
 import java.util.List;
-
 import edu.birzeit.cocacola.application.model.User;
 import edu.birzeit.cocacola.application.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +15,14 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+
+    @RequestMapping(value = "/")
+    public ResponseEntity<List<User>> getAllUsers() {
+
+        List<User> users = userService.getAllUsers();
+        return new ResponseEntity<List<User>>(users, HttpStatus.OK);
+    }
 
     @RequestMapping(value = "/{id}")
     public ResponseEntity<User> getUserByID(@PathVariable int id) {
