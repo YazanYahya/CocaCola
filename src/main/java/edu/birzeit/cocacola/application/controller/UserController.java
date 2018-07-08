@@ -19,7 +19,7 @@ public class UserController {
     private UserService userService;
 
 
-    @RequestMapping(value = "/ok")
+    @RequestMapping(method = RequestMethod.GET,value = "/")
     public ResponseEntity<List<User>> getAllUsers() {
         List<User> users = userService.getAllUsers();
 
@@ -30,7 +30,7 @@ public class UserController {
     }
 
 
-    @RequestMapping(value = "/{id}")
+    @RequestMapping(method = RequestMethod.GET,value = "/{id}")
     public ResponseEntity<User> getUserByID(@PathVariable int id) {
         User user = userService.getUser(id);
 
