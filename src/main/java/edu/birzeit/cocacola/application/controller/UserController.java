@@ -17,11 +17,14 @@ public class UserController {
     private UserService userService;
 
 
-    @RequestMapping(value = "/")
+    @RequestMapping(method = RequestMethod.GET,value = "/")
     public ResponseEntity<List<User>> getAllUsers() {
-
         List<User> users = userService.getAllUsers();
-        return new ResponseEntity<List<User>>(users, HttpStatus.OK);
+
+        if (users.size()!=0)
+            return new ResponseEntity<List<User>>(users, HttpStatus.OK);
+        else
+            return new ResponseEntity<List<User>>(users, HttpStatus.CONFLICT);
     }
 
     @RequestMapping(value = "/{id}")
