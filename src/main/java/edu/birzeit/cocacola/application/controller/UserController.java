@@ -17,7 +17,7 @@ public class UserController {
     private UserService userService;
 
 
-    @RequestMapping(value = "/")
+    @RequestMapping(value = "/",method= RequestMethod.GET)
     public ResponseEntity<List<User>> getAllUsers() {
         List<User> users = userService.getAllUsers();
 
