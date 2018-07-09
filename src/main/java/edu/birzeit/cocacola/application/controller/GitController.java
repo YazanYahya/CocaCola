@@ -27,7 +27,7 @@ public class GitController {
                 if (result == null)
                     result = line;
                 else
-                    result += line;
+                    result += ("\n" + line);
                 line = inStreamReader.readLine();
             }
         } catch (IOException e) {
