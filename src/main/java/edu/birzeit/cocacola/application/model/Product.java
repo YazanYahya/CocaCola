@@ -96,7 +96,7 @@ public class Product {
         this.itemsPerBox = itemsPerBox;
     }
 
-    @JsonIgnore
+    //@JsonIgnore
     public Inventory getInventory() {
         return inventory;
     }
