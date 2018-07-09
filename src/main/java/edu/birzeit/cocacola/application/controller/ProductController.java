@@ -35,6 +35,22 @@ public class ProductController {
 
     }
 
+    @RequestMapping(value = "/qrcode/{qrcode}")
+    public ResponseEntity<Product> getProductByQRCode(@PathVariable("qrcode") String qrcode) {
+        Product product = productService.getProductByQRCode(qrcode);
+        if (product != null)
+            return new ResponseEntity<>(product, HttpStatus.OK);
+        else
+            return new ResponseEntity<>(product, HttpStatus.NOT_FOUND);
+    }
+
+    @RequestMapping(value = "/category/{category}")
+    public ResponseEntity<List<Product>> getProductsByCategory(@PathVariable("category") String category) {
+
+        List<Product> products = productService.getProductsByCategory(category);
+        return new ResponseEntity<>(products, HttpStatus.OK);
+    }
+
 
     @RequestMapping(method = RequestMethod.POST, value = "/")
     public ResponseEntity<Product> addProduct(@RequestBody Product product) {
@@ -60,9 +76,7 @@ public class ProductController {
             return new ResponseEntity<>(HttpStatus.OK);
         else
             return new ResponseEntity<>(HttpStatus.CONFLICT);
-
     }
-
 
 
 }

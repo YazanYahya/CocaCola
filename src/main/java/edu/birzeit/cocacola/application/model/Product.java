@@ -14,7 +14,7 @@ public class Product {
     private int id;
 
     private String description;
-    private String QRCode;
+    private String qrcode;
     private String category;
     private String image;
     private double price;
@@ -28,12 +28,16 @@ public class Product {
     private OrderDetail orderDetail;
 
 
+    public Product(int id) {
+        this.id=id;
+    }
+
     public Product() {
     }
 
-    public Product(String description, String QRCode, String category, String image, double price, int itemsPerBox) {
+    public Product(String description, String qrcode, String category, String image, double price, int itemsPerBox) {
         this.description = description;
-        this.QRCode = QRCode;
+        this.qrcode = qrcode;
         this.category = category;
         this.image = image;
         this.price = price;
@@ -56,12 +60,12 @@ public class Product {
         this.description = description;
     }
 
-    public String getQRCode() {
-        return QRCode;
+    public String getQrcode() {
+        return qrcode;
     }
 
-    public void setQRCode(String QRCode) {
-        this.QRCode = QRCode;
+    public void setQrcode(String qrcode) {
+        this.qrcode = qrcode;
     }
 
     public String getCategory() {
@@ -118,7 +122,7 @@ public class Product {
         return "Product{" +
                 "id=" + id +
                 ", description='" + description + '\'' +
-                ", QRCode='" + QRCode + '\'' +
+                ", qrcode='" + qrcode + '\'' +
                 ", category='" + category + '\'' +
                 ", image='" + image + '\'' +
                 ", price=" + price +

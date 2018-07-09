@@ -26,9 +26,10 @@ public class InventoryController {
         return new ResponseEntity<>(inventory, HttpStatus.OK);
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/")
-    public ResponseEntity<Inventory> addProductToInventory(@RequestBody Inventory inventory) {
-        Inventory i = inventoryService.addProductInventory(inventory);
+    @RequestMapping(method = RequestMethod.POST, value = "/{product_id}")
+    public ResponseEntity<Inventory> addProductToInventory(@RequestBody Inventory inventory, @PathVariable int product_id) {
+
+        Inventory i = inventoryService.addProductInventory(inventory, product_id);
 
         return new ResponseEntity<>(i, HttpStatus.OK);
     }

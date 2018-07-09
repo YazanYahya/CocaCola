@@ -9,12 +9,8 @@ import javax.transaction.Transactional;
 
 
 @Repository
-public interface PhoneRepository extends JpaRepository<Phone, String> {
+public interface PhoneRepository extends JpaRepository<Phone, Integer> {
 
-    Phone findById(int id);
 
-    @Transactional
-    @Modifying
-    void deleteById(int id);
 
 }

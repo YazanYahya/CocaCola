@@ -30,5 +30,18 @@ public class PhoneService {
         return phoneRepository.save(phone);
     }
 
-
+    public Phone updatePhoneNumber(int id, Phone updatedPhone){
+        Phone phone = this.phoneRepository.findById(id).orElse(null);
+        if(phone == null)
+            return null;
+        phone.setNumber(updatedPhone.getNumber());
+        return this.phoneRepository.save(phone);
+    }
+    public Phone deletePhone(int id){
+        Phone phone = this.phoneRepository.findById(id).orElse(null);
+        if(phone == null)
+            return null;
+        this.phoneRepository.deleteById(id);
+        return phone;
+    }
 }

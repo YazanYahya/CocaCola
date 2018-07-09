@@ -46,5 +46,13 @@ public class ProductService {
         return productRepository.findById(id);
     }
 
+    public Product getProductByQRCode(String qrcode) {
+        return this.productRepository.findByQrcode(qrcode);
+    }
+
+    public List<Product> getProductsByCategory(String category) {
+        return this.productRepository.findByCategory(category);
+    }
+
 
 }

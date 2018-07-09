@@ -6,10 +6,7 @@ import edu.birzeit.cocacola.application.service.PhoneService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -35,6 +32,24 @@ public class PhoneController {
         Phone p = phoneService.addPhone(phone);
         return new ResponseEntity<>(p, HttpStatus.OK);
 
+    }
+
+    @RequestMapping(method = RequestMethod.PUT, value = "/{id}")
+    public ResponseEntity<Phone> updatePhoneNumber(@PathVariable("id") int id, @RequestBody Phone phone) {
+        Phone updatedPhone = this.phoneService.updatePhoneNumber(id, phone);
+        if (updatedPhone == null)
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        else
+            return new ResponseEntity<>(updatedPhone, HttpStatus.OK);
+    }
+
+    @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
+    public ResponseEntity<Phone> deletePhone(@PathVariable("id") int id) {
+        Phone deletedPhone = this.phoneService.deletePhone(id);
+        if (deletedPhone == null)
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        else
+            return new ResponseEntity<>(deletedPhone, HttpStatus.OK);
     }
 
 

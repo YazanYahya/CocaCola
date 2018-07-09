@@ -7,8 +7,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CredentialRepository extends JpaRepository<Credential, String> {
-    User findByUsername(String username);
+    Credential findByUsername(String username);
 
-    User findByPassword(String password);
+    Credential findByPassword(String password);
 
 }

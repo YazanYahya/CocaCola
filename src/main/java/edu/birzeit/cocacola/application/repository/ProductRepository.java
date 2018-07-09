@@ -6,11 +6,14 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Repository
 public interface ProductRepository extends JpaRepository<Product, String> {
 
     Product findById(int id);
+    Product findByQrcode (String qrcode);
+    List<Product> findByCategory(String category);
 
     @Transactional
     @Modifying

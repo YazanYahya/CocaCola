@@ -2,7 +2,9 @@ package edu.birzeit.cocacola.application.service;
 
 
 import edu.birzeit.cocacola.application.model.Inventory;
+import edu.birzeit.cocacola.application.model.Product;
 import edu.birzeit.cocacola.application.repository.InventoryRepository;
+import edu.birzeit.cocacola.application.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +13,8 @@ import java.util.List;
 
 @Service
 public class InventoryService {
+    @Autowired
+    private ProductRepository productRepository;
 
     @Autowired
     private InventoryRepository inventoryRepository;
@@ -22,8 +26,8 @@ public class InventoryService {
     }
 
 
-    public Inventory addProductInventory(Inventory inventory) {
-
+    public Inventory addProductInventory(Inventory inventory, int product_id) {
+        inventory.setProducts(new Product(product_id));
         return inventoryRepository.save(inventory);
     }
 
@@ -44,7 +48,7 @@ public class InventoryService {
     public void decreaseProductQuantity(int id, int quantity) {
 
         Inventory inventory = getInventory(id);
-        if (inventory.getQuantity() > 0) {
+        if (inventory.getQuantity() >= quantity) {
             inventory.setQuantity(inventory.getQuantity() - quantity);
             inventoryRepository.save(inventory);
         }
