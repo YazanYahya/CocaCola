@@ -34,7 +34,7 @@ public class InventoryController {
 
     @RequestMapping(method = RequestMethod.POST, value = "/")
     public ResponseEntity<Inventory> addProductToInventory(@RequestBody Inventory inventory) {
-        Inventory i= inventoryService.addProductInventory(inventory);
+        Inventory i = inventoryService.addProductInventory(inventory);
 
         if (i == null)
             return new ResponseEntity<Inventory>(i, HttpStatus.CONFLICT);

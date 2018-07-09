@@ -28,7 +28,7 @@ public class ProductService {
     }
 
     public Product updateProduct(Product product) {
-        if(productRepository.findById(product.getId()) == null)
+        if (productRepository.findById(product.getId()) == null)
             return null;
         return productRepository.save(product);
     }
@@ -37,19 +37,14 @@ public class ProductService {
         if (productRepository.findById(id) != null) { // exist{
             productRepository.deleteById(id);
             return true;
-        }
-
-        else
+        } else
             return false;
     }
 
 
-    public Product getProduct(int id){
+    public Product getProduct(int id) {
         return productRepository.findById(id);
     }
-
-
-
 
 
 }

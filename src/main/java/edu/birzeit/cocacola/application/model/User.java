@@ -1,8 +1,9 @@
 package edu.birzeit.cocacola.application.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import java.util.List;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "users")

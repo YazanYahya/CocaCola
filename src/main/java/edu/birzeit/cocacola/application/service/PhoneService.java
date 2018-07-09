@@ -3,7 +3,6 @@ package edu.birzeit.cocacola.application.service;
 
 import edu.birzeit.cocacola.application.model.Phone;
 import edu.birzeit.cocacola.application.repository.PhoneRepository;
-import edu.birzeit.cocacola.application.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

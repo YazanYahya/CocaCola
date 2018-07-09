@@ -1,7 +1,7 @@
 package edu.birzeit.cocacola.application.service;
 
-import edu.birzeit.cocacola.application.model.Credential;
 import edu.birzeit.cocacola.application.dto.CredentialResponse;
+import edu.birzeit.cocacola.application.model.Credential;
 import edu.birzeit.cocacola.application.model.User;
 import edu.birzeit.cocacola.application.repository.CredentialRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +22,8 @@ public class CredentialService {
     }
 
     public CredentialResponse validate(Credential credential) {
-        String username=credential.getUsername();
-        String pass=credential.getPassword();
+        String username = credential.getUsername();
+        String pass = credential.getPassword();
         User user = getUserByUsername(username);
         CredentialResponse credentialResponse = new CredentialResponse();
         if (user == null) { //username error

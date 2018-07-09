@@ -3,7 +3,6 @@ package edu.birzeit.cocacola.application.controller;
 
 import edu.birzeit.cocacola.application.model.Phone;
 import edu.birzeit.cocacola.application.service.PhoneService;
-import edu.birzeit.cocacola.application.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -43,7 +42,6 @@ public class PhoneController {
             return new ResponseEntity<Phone>(p, HttpStatus.OK);
 
     }
-
 
 
 }

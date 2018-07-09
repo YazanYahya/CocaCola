@@ -1,7 +1,7 @@
 package edu.birzeit.cocacola.application.controller;
 
-import edu.birzeit.cocacola.application.model.Credential;
 import edu.birzeit.cocacola.application.dto.CredentialResponse;
+import edu.birzeit.cocacola.application.model.Credential;
 import edu.birzeit.cocacola.application.service.CredentialService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,12 +19,12 @@ public class CredentialController {
     @Autowired
     private CredentialService credentialService;
 
-    @RequestMapping(method = RequestMethod.POST,value = "/authenticate")
-    public ResponseEntity<CredentialResponse> authenticate (@RequestBody  Credential credential) {
-        CredentialResponse credentialResponse=credentialService.validate(credential);
-        if(credentialResponse.getUser()==null)
-            return new ResponseEntity(credentialResponse,HttpStatus.UNAUTHORIZED);
+    @RequestMapping(method = RequestMethod.POST, value = "/authenticate")
+    public ResponseEntity<CredentialResponse> authenticate(@RequestBody Credential credential) {
+        CredentialResponse credentialResponse = credentialService.validate(credential);
+        if (credentialResponse.getUser() == null)
+            return new ResponseEntity(credentialResponse, HttpStatus.UNAUTHORIZED);
         else
-            return new ResponseEntity(credentialResponse,HttpStatus.OK);
+            return new ResponseEntity(credentialResponse, HttpStatus.OK);
     }
 }

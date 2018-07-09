@@ -28,13 +28,12 @@ public class ProductController {
     public ResponseEntity<Product> getProductByID(@PathVariable int id) {
         Product product = productService.getProduct(id);
 
-        if (product!=null)
-            return new ResponseEntity<Product>(product,HttpStatus.OK);
+        if (product != null)
+            return new ResponseEntity<Product>(product, HttpStatus.OK);
         else
-            return new ResponseEntity<Product>(product,HttpStatus.CONFLICT);
+            return new ResponseEntity<Product>(product, HttpStatus.CONFLICT);
 
     }
-
 
 
     @RequestMapping(method = RequestMethod.POST, value = "/")
