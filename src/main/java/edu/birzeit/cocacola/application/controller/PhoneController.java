@@ -25,10 +25,7 @@ public class PhoneController {
     public ResponseEntity<List<Phone>> getAllPhones() {
 
         List<Phone> phones = phoneService.getAllPhones();
-        if (phones.size() == 0)
-            return new ResponseEntity<List<Phone>>(phones, HttpStatus.CONFLICT);
-        else
-            return new ResponseEntity<List<Phone>>(phones, HttpStatus.OK);
+        return new ResponseEntity<>(phones, HttpStatus.OK);
 
     }
 
@@ -36,10 +33,7 @@ public class PhoneController {
     @RequestMapping(method = RequestMethod.POST, value = "/")
     public ResponseEntity<Phone> addPhone(@RequestBody Phone phone) {
         Phone p = phoneService.addPhone(phone);
-        if (p == null)
-            return new ResponseEntity<Phone>(p, HttpStatus.CONFLICT);
-        else
-            return new ResponseEntity<Phone>(p, HttpStatus.OK);
+        return new ResponseEntity<>(p, HttpStatus.OK);
 
     }
 

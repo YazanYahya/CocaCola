@@ -22,10 +22,8 @@ public class UserController {
     public ResponseEntity<List<User>> getAllUsers() {
         List<User> users = userService.getAllUsers();
 
-        if (users.size() != 0)
-            return new ResponseEntity<List<User>>(users, HttpStatus.OK);
-        else
-            return new ResponseEntity<List<User>>(users, HttpStatus.CONFLICT);
+        return new ResponseEntity<>(users, HttpStatus.OK);
+
     }
 
 
@@ -34,9 +32,9 @@ public class UserController {
         User user = userService.getUser(id);
 
         if (user != null)
-            return new ResponseEntity<User>(user, HttpStatus.OK);
+            return new ResponseEntity<>(user, HttpStatus.OK);
         else
-            return new ResponseEntity<User>(user, HttpStatus.CONFLICT);
+            return new ResponseEntity<>(user, HttpStatus.NOT_FOUND);
 
     }
 
@@ -44,10 +42,7 @@ public class UserController {
     @RequestMapping(method = RequestMethod.POST, value = "/")
     public ResponseEntity<User> addUser(@RequestBody User user) {
         User u = userService.addUser(user);
-        if (u == null)
-            return new ResponseEntity<User>(u, HttpStatus.CONFLICT);
-        else
-            return new ResponseEntity<User>(u, HttpStatus.OK);
+        return new ResponseEntity<>(u, HttpStatus.OK);
 
     }
 
@@ -58,9 +53,9 @@ public class UserController {
 
         User u = userService.updateUser(user);
         if (u == null)
-            return new ResponseEntity<User>(u, HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(u, HttpStatus.CONFLICT);
         else
-            return new ResponseEntity<User>(u, HttpStatus.OK);
+            return new ResponseEntity<>(u, HttpStatus.OK);
 
     }
 

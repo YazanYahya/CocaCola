@@ -26,4 +26,27 @@ public class InventoryService {
 
         return inventoryRepository.save(inventory);
     }
+
+
+    public Inventory getInventory(int product_id) {
+        return inventoryRepository.findByProduct_id(product_id);
+    }
+
+
+    public void increaseProductQuantity(int id, int quantity) {
+
+        Inventory inventory = getInventory(id);
+        inventory.setQuantity(inventory.getQuantity() + quantity);
+        inventoryRepository.save(inventory);
+    }
+
+
+    public void decreaseProductQuantity(int id, int quantity) {
+
+        Inventory inventory = getInventory(id);
+        if (inventory.getQuantity() > 0) {
+            inventory.setQuantity(inventory.getQuantity() - quantity);
+            inventoryRepository.save(inventory);
+        }
+    }
 }

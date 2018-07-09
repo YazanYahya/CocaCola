@@ -20,7 +20,7 @@ public class ProductController {
     public ResponseEntity<List<Product>> getAllProducts() {
 
         List<Product> products = productService.getAllProducts();
-        return new ResponseEntity<List<Product>>(products, HttpStatus.OK);
+        return new ResponseEntity<>(products, HttpStatus.OK);
     }
 
 
@@ -29,9 +29,9 @@ public class ProductController {
         Product product = productService.getProduct(id);
 
         if (product != null)
-            return new ResponseEntity<Product>(product, HttpStatus.OK);
+            return new ResponseEntity<>(product, HttpStatus.OK);
         else
-            return new ResponseEntity<Product>(product, HttpStatus.CONFLICT);
+            return new ResponseEntity<>(product, HttpStatus.NOT_FOUND);
 
     }
 
@@ -39,11 +39,7 @@ public class ProductController {
     @RequestMapping(method = RequestMethod.POST, value = "/")
     public ResponseEntity<Product> addProduct(@RequestBody Product product) {
         Product p = productService.addProduct(product);
-        if (p == null)
-            return new ResponseEntity<Product>(p, HttpStatus.CONFLICT);
-        else
-            return new ResponseEntity<Product>(p, HttpStatus.OK);
-
+        return new ResponseEntity<>(p, HttpStatus.OK);
     }
 
 
@@ -52,10 +48,9 @@ public class ProductController {
         product.setId(id);
         Product p = productService.updateProduct(product);
         if (p == null)
-            return new ResponseEntity<Product>(p, HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(p, HttpStatus.CONFLICT);
         else
-            return new ResponseEntity<Product>(p, HttpStatus.OK);
-
+            return new ResponseEntity<>(p, HttpStatus.OK);
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
@@ -67,5 +62,7 @@ public class ProductController {
             return new ResponseEntity<>(HttpStatus.CONFLICT);
 
     }
+
+
 
 }
