@@ -1,7 +1,7 @@
 package edu.birzeit.cocacola.application.service;
 
 import edu.birzeit.cocacola.application.model.Credential;
-import edu.birzeit.cocacola.application.model.CredentialResponse;
+import edu.birzeit.cocacola.application.dto.CredentialResponse;
 import edu.birzeit.cocacola.application.model.User;
 import edu.birzeit.cocacola.application.repository.CredentialRepository;
 import org.springframework.beans.factory.annotation.Autowired;

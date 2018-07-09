@@ -14,30 +14,30 @@ public class Product {
     private int id;
 
     private String description;
-    private String qrcode;
+    private String QRCode;
     private String category;
     private String image;
     private double price;
-    private int items_per_box;
+    private int itemsPerBox;
 
     @OneToOne(mappedBy = "product", cascade = CascadeType.ALL)
     private Inventory inventory;
 
 
     @OneToOne(mappedBy = "product")
-    private Order_Detail order_detail;
+    private OrderDetail orderDetail;
 
 
     public Product() {
     }
 
-    public Product(String description, String qrcode, String category, String image, double price, int items_per_box) {
+    public Product(String description, String QRCode, String category, String image, double price, int itemsPerBox) {
         this.description = description;
-        this.qrcode = qrcode;
+        this.QRCode = QRCode;
         this.category = category;
         this.image = image;
         this.price = price;
-        this.items_per_box = items_per_box;
+        this.itemsPerBox = itemsPerBox;
     }
 
     public int getId() {
@@ -56,12 +56,12 @@ public class Product {
         this.description = description;
     }
 
-    public String getQrcode() {
-        return qrcode;
+    public String getQRCode() {
+        return QRCode;
     }
 
-    public void setQrcode(String qrcode) {
-        this.qrcode = qrcode;
+    public void setQRCode(String QRCode) {
+        this.QRCode = QRCode;
     }
 
     public String getCategory() {
@@ -88,12 +88,12 @@ public class Product {
         this.price = price;
     }
 
-    public int getItems_per_box() {
-        return items_per_box;
+    public int getItemsPerBox() {
+        return itemsPerBox;
     }
 
-    public void setItems_per_box(int items_per_box) {
-        this.items_per_box = items_per_box;
+    public void setItemsPerBox(int itemsPerBox) {
+        this.itemsPerBox = itemsPerBox;
     }
 
     @JsonIgnore
@@ -106,12 +106,12 @@ public class Product {
     }
 
     @JsonIgnore
-    public Order_Detail getOrder_detail() {
-        return order_detail;
+    public OrderDetail getOrderDetail() {
+        return orderDetail;
     }
 
-    public void setOrder_detail(Order_Detail order_detail) {
-        this.order_detail = order_detail;
+    public void setOrderDetail(OrderDetail orderDetail) {
+        this.orderDetail = orderDetail;
     }
 
     @Override
@@ -119,13 +119,13 @@ public class Product {
         return "Product{" +
                 "id=" + id +
                 ", description='" + description + '\'' +
-                ", qrcode='" + qrcode + '\'' +
+                ", QRCode='" + QRCode + '\'' +
                 ", category='" + category + '\'' +
                 ", image='" + image + '\'' +
                 ", price=" + price +
-                ", items_per_box=" + items_per_box +
+                ", itemsPerBox=" + itemsPerBox +
                 ", inventory=" + inventory +
-                ", order_detail=" + order_detail +
+                ", orderDetail=" + orderDetail +
                 '}';
     }
 }

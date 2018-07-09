@@ -8,7 +8,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "truck_orders")
-public class Truck_Order {
+public class TruckOrder {
 
 
     @Id
@@ -18,24 +18,24 @@ public class Truck_Order {
 
     @ManyToOne
     @JoinColumn(name = "user_truck_driver_id")
-    private User user_truck_driver;
+    private User userTruckDriver;
 
     @ManyToOne
     @JoinColumn(name = "user_lori_id")
-    private User user_lori;
+    private User userLori;
 
     private String state;
     private String notes;
 
 
-    @OneToMany(mappedBy = "truck_order", cascade = CascadeType.ALL)
-    private List<Order_Detail> order_details;
+    @OneToMany(mappedBy = "truckOrder", cascade = CascadeType.ALL)
+    private List<OrderDetail> orderDetails;
 
 
-    public Truck_Order() {
+    public TruckOrder() {
     }
 
-    public Truck_Order(String state, String notes) {
+    public TruckOrder(String state, String notes) {
         this.state = state;
         this.notes = notes;
     }
@@ -49,21 +49,21 @@ public class Truck_Order {
     }
 
     @JsonIgnore
-    public User getUser_truck_driver() {
-        return user_truck_driver;
+    public User getUserTruckDriver() {
+        return userTruckDriver;
     }
 
-    public void setUser_truck_driver(User user_truck_driver) {
-        this.user_truck_driver = user_truck_driver;
+    public void setUserTruckDriver(User userTruckDriver) {
+        this.userTruckDriver = userTruckDriver;
     }
 
     @JsonIgnore
-    public User getUser_lori() {
-        return user_lori;
+    public User getUserLori() {
+        return userLori;
     }
 
-    public void setUser_lori(User user_lori) {
-        this.user_lori = user_lori;
+    public void setUserLori(User userLori) {
+        this.userLori = userLori;
     }
 
     public String getState() {
@@ -83,23 +83,23 @@ public class Truck_Order {
     }
 
     @JsonIgnore
-    public List<Order_Detail> getOrder_details() {
-        return order_details;
+    public List<OrderDetail> getOrderDetails() {
+        return orderDetails;
     }
 
-    public void setOrder_details(List<Order_Detail> order_details) {
-        this.order_details = order_details;
+    public void setOrderDetails(List<OrderDetail> orderDetails) {
+        this.orderDetails = orderDetails;
     }
 
     @Override
     public String toString() {
-        return "Truck_Order{" +
+        return "TruckOrder{" +
                 "id=" + id +
-                ", user_truck_driver=" + user_truck_driver +
-                ", user_lori=" + user_lori +
+                ", userTruckDriver=" + userTruckDriver +
+                ", userLori=" + userLori +
                 ", state='" + state + '\'' +
                 ", notes='" + notes + '\'' +
-                ", order_details=" + order_details +
+                ", orderDetails=" + orderDetails +
                 '}';
     }
 }

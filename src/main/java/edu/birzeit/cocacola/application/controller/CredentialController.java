@@ -1,7 +1,7 @@
 package edu.birzeit.cocacola.application.controller;
 
 import edu.birzeit.cocacola.application.model.Credential;
-import edu.birzeit.cocacola.application.model.CredentialResponse;
+import edu.birzeit.cocacola.application.dto.CredentialResponse;
 import edu.birzeit.cocacola.application.service.CredentialService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "order_details")
-public class Order_Detail {
+public class OrderDetail {
 
 
     @Id
@@ -18,17 +18,17 @@ public class Order_Detail {
 
     @ManyToOne
     @JoinColumn(name = "truck_order_id")
-    private Truck_Order truck_order;
+    private TruckOrder truckOrder;
 
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "product_id")
     private Product product;
 
-    public Order_Detail() {
+    public OrderDetail() {
     }
 
-    public Order_Detail(int quantity) {
+    public OrderDetail(int quantity) {
         this.quantity = quantity;
     }
 
@@ -49,12 +49,12 @@ public class Order_Detail {
     }
 
     @JsonIgnore
-    public Truck_Order getTruck_order() {
-        return truck_order;
+    public TruckOrder getTruckOrder() {
+        return truckOrder;
     }
 
-    public void setTruck_order(Truck_Order truck_order) {
-        this.truck_order = truck_order;
+    public void setTruckOrder(TruckOrder truckOrder) {
+        this.truckOrder = truckOrder;
     }
 
     @JsonIgnore
@@ -68,10 +68,10 @@ public class Order_Detail {
 
     @Override
     public String toString() {
-        return "Order_Detail{" +
+        return "OrderDetail{" +
                 "id=" + id +
                 ", quantity=" + quantity +
-                ", truck_order=" + truck_order +
+                ", truckOrder=" + truckOrder +
                 ", product=" + product +
                 '}';
     }

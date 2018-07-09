@@ -27,12 +27,12 @@ public class User {
     private Credential credential;
 
 
-    @OneToMany(mappedBy = "user_truck_driver", cascade = CascadeType.ALL)
-    private List<Truck_Order> truck_orders;
+    @OneToMany(mappedBy = "userTruckDriver", cascade = CascadeType.ALL)
+    private List<TruckOrder> truckOrders;
 
 
-    @OneToMany(mappedBy = "user_lori", cascade = CascadeType.ALL)
-    private List<Truck_Order> lori_served_orders;
+    @OneToMany(mappedBy = "userLori", cascade = CascadeType.ALL)
+    private List<TruckOrder> loriServedOrders;
 
 
     public User() {
@@ -104,21 +104,21 @@ public class User {
     }
 
     @JsonIgnore
-    public List<Truck_Order> getTruck_orders() {
-        return truck_orders;
+    public List<TruckOrder> getTruckOrders() {
+        return truckOrders;
     }
 
-    public void setTruck_orders(List<Truck_Order> truck_orders) {
-        this.truck_orders = truck_orders;
+    public void setTruckOrders(List<TruckOrder> truckOrders) {
+        this.truckOrders = truckOrders;
     }
 
     @JsonIgnore
-    public List<Truck_Order> getLori_served_orders() {
-        return lori_served_orders;
+    public List<TruckOrder> getLoriServedOrders() {
+        return loriServedOrders;
     }
 
-    public void setLori_served_orders(List<Truck_Order> lori_served_orders) {
-        this.lori_served_orders = lori_served_orders;
+    public void setLoriServedOrders(List<TruckOrder> loriServedOrders) {
+        this.loriServedOrders = loriServedOrders;
     }
 
     @Override
@@ -131,8 +131,8 @@ public class User {
                 ", image='" + image + '\'' +
                 ", phones=" + phones +
                 ", credential=" + credential +
-                ", truck_orders=" + truck_orders +
-                ", lori_served_orders=" + lori_served_orders +
+                ", truckOrders=" + truckOrders +
+                ", loriServedOrders=" + loriServedOrders +
                 '}';
     }
 }

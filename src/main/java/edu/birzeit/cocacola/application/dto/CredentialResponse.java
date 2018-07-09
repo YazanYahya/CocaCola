@@ -1,4 +1,6 @@
-package edu.birzeit.cocacola.application.model;
+package edu.birzeit.cocacola.application.dto;
+
+import edu.birzeit.cocacola.application.model.User;
 
 public class CredentialResponse {
     private String note;
