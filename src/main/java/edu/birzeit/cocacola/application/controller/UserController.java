@@ -1,8 +1,6 @@
 package edu.birzeit.cocacola.application.controller;
 
 import java.util.List;
-
-import edu.birzeit.cocacola.application.model.Phone;
 import edu.birzeit.cocacola.application.model.User;
 import edu.birzeit.cocacola.application.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

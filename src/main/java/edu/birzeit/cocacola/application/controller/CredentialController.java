@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping("/coca-cola/user")
+@RequestMapping("/coca-cola/users")
 public class CredentialController {
 
     @Autowired
