@@ -35,18 +35,17 @@ public class InventoryController {
     }
 
 
-    @RequestMapping(method = RequestMethod.PUT, value = "/{id}/increase/{quantity}")
-    public ResponseEntity<Inventory> increaseProductQuantity(@PathVariable int id, @PathVariable int quantity) {
-
-        inventoryService.increaseProductQuantity(id, quantity);
+    @RequestMapping(method = RequestMethod.PUT, value = "/{qrcode}/increase")
+    public ResponseEntity<Inventory> increaseProductQuantity(@PathVariable String qrcode,@RequestBody Inventory inventory) {
+        inventoryService.increaseProductQuantity(qrcode,inventory);
         return new ResponseEntity<>(HttpStatus.OK);
 
     }
 
 
-    @RequestMapping(method = RequestMethod.PUT, value = "/{id}/decrease/{quantity}")
-    public ResponseEntity<Inventory> decreaseProductQuantity(@PathVariable int id, @PathVariable int quantity) {
-        inventoryService.decreaseProductQuantity(id, quantity);
+    @RequestMapping(method = RequestMethod.PUT, value = "/{qrcode}/decrease")
+    public ResponseEntity<Inventory> decreaseProductQuantity(@PathVariable String qrcode,@RequestBody Inventory inventory) {
+        inventoryService.decreaseProductQuantity(qrcode, inventory);
         return new ResponseEntity<>(HttpStatus.OK);
 
     }

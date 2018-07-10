@@ -19,6 +19,7 @@ public class InventoryService {
     @Autowired
     private InventoryRepository inventoryRepository;
 
+
     public List<Inventory> getInventory() {
         List<Inventory> inventory = new ArrayList<>();
         inventoryRepository.findAll().forEach(inventory::add);
@@ -37,17 +38,25 @@ public class InventoryService {
     }
 
 
-    public void increaseProductQuantity(int id, int quantity) {
+    public Product getProductByQrcode(String qrcode){
+        return productRepository.findByQrcode(qrcode);
+    }
 
-        Inventory inventory = getInventory(id);
-        inventory.setQuantity(inventory.getQuantity() + quantity);
+
+    public void increaseProductQuantity(String qrcode, Inventory inv) {
+
+        int productid=getProductByQrcode(qrcode).getId();
+        Inventory inventory = getInventory(productid);
+        inventory.setQuantity(inventory.getQuantity() + inv.getQuantity());
         inventoryRepository.save(inventory);
     }
 
 
-    public void decreaseProductQuantity(int id, int quantity) {
+    public void decreaseProductQuantity(String qrcode, Inventory inv) {
 
-        Inventory inventory = getInventory(id);
+        int productid=getProductByQrcode(qrcode).getId();
+        Inventory inventory = getInventory(productid);
+        int quantity = inv.getQuantity();
         if (inventory.getQuantity() >= quantity) {
             inventory.setQuantity(inventory.getQuantity() - quantity);
             inventoryRepository.save(inventory);

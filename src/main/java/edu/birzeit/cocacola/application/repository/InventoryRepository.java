@@ -16,4 +16,5 @@ public interface InventoryRepository extends JpaRepository<Inventory, String> {
     Inventory findByProduct_id(int id);
 
 
+
 }
