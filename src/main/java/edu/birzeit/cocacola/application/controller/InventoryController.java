@@ -26,7 +26,7 @@ public class InventoryController {
         return new ResponseEntity<>(inventory, HttpStatus.OK);
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/{product_id}")
+    @RequestMapping(method = RequestMethod.POST, value = "/productid/{product_id}")
     public ResponseEntity<Inventory> addProductToInventory(@RequestBody Inventory inventory, @PathVariable int product_id) {
 
         Inventory i = inventoryService.addProductInventory(inventory, product_id);
@@ -35,18 +35,34 @@ public class InventoryController {
     }
 
 
-    @RequestMapping(method = RequestMethod.PUT, value = "/{qrcode}/increase")
-    public ResponseEntity<Inventory> increaseProductQuantity(@PathVariable String qrcode,@RequestBody Inventory inventory) {
-        inventoryService.increaseProductQuantity(qrcode,inventory);
-        return new ResponseEntity<>(HttpStatus.OK);
+    @RequestMapping(method = RequestMethod.GET, value = "/qrcode/{qrcode}")
+    public ResponseEntity<Inventory> getInventoryByQrcode(@PathVariable String qrcode) {
+
+        Inventory i = inventoryService.getInventoryByQrcode(qrcode);
+        return new ResponseEntity<>(i, HttpStatus.OK);
+    }
+
+
+    @RequestMapping(method = RequestMethod.PUT, value = "/qrcode/{qrcode}/increase")
+    public ResponseEntity<Inventory> increaseProductQuantity(@PathVariable String qrcode, @RequestBody Inventory inventory) {
+        Inventory inv = inventoryService.increaseProductQuantity(qrcode, inventory);
+        if (inv == null)
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+
+        else
+            return new ResponseEntity<>(inv, HttpStatus.OK);
 
     }
 
 
-    @RequestMapping(method = RequestMethod.PUT, value = "/{qrcode}/decrease")
-    public ResponseEntity<Inventory> decreaseProductQuantity(@PathVariable String qrcode,@RequestBody Inventory inventory) {
-        inventoryService.decreaseProductQuantity(qrcode, inventory);
-        return new ResponseEntity<>(HttpStatus.OK);
+    @RequestMapping(method = RequestMethod.PUT, value = "/qrcode/{qrcode}/decrease")
+    public ResponseEntity<Inventory> decreaseProductQuantity(@PathVariable String qrcode, @RequestBody Inventory inventory) {
+        Inventory inv = inventoryService.decreaseProductQuantity(qrcode, inventory);
+        if (inv == null)
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        else
+            return new ResponseEntity<>(inv, HttpStatus.OK);
+
 
     }
 

@@ -38,28 +38,36 @@ public class InventoryService {
     }
 
 
-    public Product getProductByQrcode(String qrcode){
+    public Inventory getInventoryByQrcode(String qrcode) {
+
+        int prodductid = getProductByQrcode(qrcode).getId();
+        return getInventory(prodductid);
+    }
+
+
+    public Product getProductByQrcode(String qrcode) {
         return productRepository.findByQrcode(qrcode);
     }
 
 
-    public void increaseProductQuantity(String qrcode, Inventory inv) {
+    public Inventory increaseProductQuantity(String qrcode, Inventory inv) {
 
-        int productid=getProductByQrcode(qrcode).getId();
+        int productid = getProductByQrcode(qrcode).getId();
         Inventory inventory = getInventory(productid);
         inventory.setQuantity(inventory.getQuantity() + inv.getQuantity());
-        inventoryRepository.save(inventory);
+        return inventoryRepository.save(inventory);
     }
 
 
-    public void decreaseProductQuantity(String qrcode, Inventory inv) {
+    public Inventory decreaseProductQuantity(String qrcode, Inventory inv) {
 
-        int productid=getProductByQrcode(qrcode).getId();
+        int productid = getProductByQrcode(qrcode).getId();
         Inventory inventory = getInventory(productid);
         int quantity = inv.getQuantity();
         if (inventory.getQuantity() >= quantity) {
             inventory.setQuantity(inventory.getQuantity() - quantity);
-            inventoryRepository.save(inventory);
+            return inventoryRepository.save(inventory);
         }
+        return null;
     }
 }

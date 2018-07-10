@@ -99,7 +99,8 @@ public class Product {
     public void setItemsPerBox(int itemsPerBox) {
         this.itemsPerBox = itemsPerBox;
     }
-    
+
+    @JsonIgnore
     public Inventory getInventory() {
         return inventory;
     }
