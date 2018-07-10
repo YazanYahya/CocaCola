@@ -22,9 +22,6 @@ public class CredentialController {
     @RequestMapping(method = RequestMethod.POST, value = "/authenticate")
     public ResponseEntity<CredentialResponse> authenticate(@RequestBody Credential credential) {
         CredentialResponse credentialResponse = credentialService.validate(credential);
-        if (credentialResponse.getUser() == null)
-            return new ResponseEntity(credentialResponse, HttpStatus.UNAUTHORIZED);
-        else
-            return new ResponseEntity(credentialResponse, HttpStatus.OK);
+        return new ResponseEntity(credentialResponse, HttpStatus.OK);
     }
 }

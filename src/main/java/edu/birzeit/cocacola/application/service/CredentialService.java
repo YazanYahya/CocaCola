@@ -22,14 +22,18 @@ public class CredentialService {
         if (userCredentialByUserName == null) { //username error
             credentialResponse.setNote("Username is Wrong !");
             credentialResponse.setUser(null);
+            credentialResponse.setLoggedIn(false);
         } else { //usernmae is right
             Credential userCredentialByPassword = this.credentialRepository.findByPassword(password);
             if (userCredentialByPassword == null) { //password is wrong
                 credentialResponse.setNote("Password is error !");
                 credentialResponse.setUser(null);
+                credentialResponse.setLoggedIn(false);
             } else {
                 credentialResponse.setUser(userCredentialByPassword.getUser());
                 credentialResponse.setNote(null);
+                credentialResponse.setLoggedIn(true);
+
             }
         }
         return credentialResponse;
