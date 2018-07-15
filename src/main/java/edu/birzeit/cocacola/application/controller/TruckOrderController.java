@@ -38,25 +38,25 @@ public class TruckOrderController {
 
     }
 
+    /*
+        @RequestMapping(method = RequestMethod.GET, value = "/lori_id/{lori_id}")
+        public ResponseEntity<List<TruckOrder>> getOrdersByLoriId(@PathVariable int lori_id) {
 
-    /*@RequestMapping(method = RequestMethod.GET, value = "/lori_id/{lori_id}")
-    public ResponseEntity<List<TruckOrder>> getOrdersByLoriId(@PathVariable int lori_id) {
+            List<TruckOrder> truckOrders = truckOrderService.getOrdersByLoriId(lori_id);
 
-        List<TruckOrder> truckOrders = truckOrderService.getOrdersByLoriId(lori_id);
-
-        return new ResponseEntity<>(truckOrders, HttpStatus.OK);
-    }
+            return new ResponseEntity<>(truckOrders, HttpStatus.OK);
+        }
 
 
-    @RequestMapping(method = RequestMethod.GET, value = "/truck_driver_id/{truck_driver_id}")
-    public ResponseEntity<List<TruckOrder>> getOrderByTruckDriverId(@PathVariable int truck_driver_id) {
+        @RequestMapping(method = RequestMethod.GET, value = "/truck_driver_id/{truck_driver_id}")
+        public ResponseEntity<List<TruckOrder>> getOrderByTruckDriverId(@PathVariable int truck_driver_id) {
 
-        List<TruckOrder> truckOrders = truckOrderService.getOrdersByTruckDriverId(truck_driver_id);
+            List<TruckOrder> truckOrders = truckOrderService.getOrdersByTruckDriverId(truck_driver_id);
 
-        return new ResponseEntity<>(truckOrders, HttpStatus.OK);
+            return new ResponseEntity<>(truckOrders, HttpStatus.OK);
 
-    }*/
-
+        }
+    */
     @RequestMapping(method = RequestMethod.POST, value = "/truck_driver_id/{truck_driver_id}/lori_id/{lori_id}")
     public ResponseEntity<TruckOrder> addOrder(@RequestBody TruckOrder truckOrder, @PathVariable int truck_driver_id, @PathVariable int lori_id) {
 

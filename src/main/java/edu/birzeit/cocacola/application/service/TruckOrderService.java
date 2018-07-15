@@ -36,13 +36,13 @@ public class TruckOrderService {
 
    /* public List<TruckOrder> getOrdersByLoriId(int lori_id) {
 
-        return this.truckOrderRepository.findByX(lori_id);
+        return this.truckOrderRepository.findAllByUserId(lori_id);
     }
 
 
     public List<TruckOrder> getOrdersByTruckDriverId(int truck_driver_id) {
 
-        return this.truckOrderRepository.findByUsertruckdriverid(truck_driver_id);
+        return this.truckOrderRepository.findAllByUserId(truck_driver_id);
     }*/
 
     public TruckOrder addOrder(TruckOrder truckOrder, int truck_driver_id, int lori_id) {

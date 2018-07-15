@@ -38,4 +38,9 @@ public class CredentialService {
         }
         return credentialResponse;
     }
+
+
+    public Credential addCredential(Credential credential){
+        return this.credentialRepository.save(credential);
+    }
 }

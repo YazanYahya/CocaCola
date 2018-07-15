@@ -24,4 +24,13 @@ public class CredentialController {
         CredentialResponse credentialResponse = credentialService.validate(credential);
         return new ResponseEntity(credentialResponse, HttpStatus.OK);
     }
+
+    @RequestMapping(method = RequestMethod.POST, value = "/add/authenticate")
+    public ResponseEntity<Credential> addCredential(@RequestBody Credential credential) {
+
+        Credential cred = this.credentialService.addCredential(credential);
+        return new ResponseEntity(cred, HttpStatus.OK);
+    }
+
+
 }
