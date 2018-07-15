@@ -23,7 +23,6 @@ public class UserController {
         List<User> users = userService.getAllUsers();
 
         return new ResponseEntity<>(users, HttpStatus.OK);
-
     }
 
 
@@ -34,8 +33,15 @@ public class UserController {
         if (user != null)
             return new ResponseEntity<>(user, HttpStatus.OK);
         else
-            return new ResponseEntity<>(user, HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+c
+    }
 
+
+    @RequestMapping(method = RequestMethod.GET, value = "/role/{role}")
+    public ResponseEntity<List<User>> getUsersByRole(@PathVariable int role) {
+        List<User> users = userService.getUsersByRole(role);
+        return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
 
@@ -53,7 +59,7 @@ public class UserController {
 
         User u = userService.updateUser(user);
         if (u == null)
-            return new ResponseEntity<>(u, HttpStatus.CONFLICT);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         else
             return new ResponseEntity<>(u, HttpStatus.OK);
 
@@ -65,8 +71,9 @@ public class UserController {
         if (userService.deleteUser(id))
             return new ResponseEntity<>(HttpStatus.OK);
         else
-            return new ResponseEntity<>(HttpStatus.CONFLICT);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 
     }
+
 
 }

@@ -9,15 +9,15 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 @Repository
-public interface ProductRepository extends JpaRepository<Product, String> {
+public interface ProductRepository extends JpaRepository<Product, Integer> {
 
     Product findById(int id);
-    Product findByQrcode (String qrcode);
+
+    Product findByQrcode(String qrcode);
+
     List<Product> findByCategory(String category);
 
-    @Transactional
-    @Modifying
-    void deleteById(int id);
+    List<Product> findByDescription(String description);
 
 
 }

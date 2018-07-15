@@ -36,7 +36,7 @@ public class UserService {
     }
 
     public boolean deleteUser(int id) {
-        if (userRepository.findById(id) != null) { // exist{
+        if (userRepository.findById(id) != null) {
             userRepository.deleteById(id);
             return true;
         } else
@@ -46,6 +46,12 @@ public class UserService {
 
     public User getUser(int id) {
         return userRepository.findById(id);
+    }
+
+    public List<User> getUsersByRole(int role) {
+
+        return this.userRepository.findByRole(role);
+
     }
 
 

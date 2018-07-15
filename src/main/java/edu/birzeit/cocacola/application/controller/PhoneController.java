@@ -18,19 +18,25 @@ public class PhoneController {
     @Autowired
     private PhoneService phoneService;
 
-    @RequestMapping(value = "/")
-    public ResponseEntity<List<Phone>> getAllPhones() {
+    @RequestMapping(value = "/{userid}")
+    public ResponseEntity<List<Phone>> getAllPhonesForUser(@PathVariable int userid) {
 
-        List<Phone> phones = phoneService.getAllPhones();
-        return new ResponseEntity<>(phones, HttpStatus.OK);
+        List<Phone> phones = phoneService.getAllPhonesForUser(userid);
+        if (phones == null)
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        else
+            return new ResponseEntity<>(phones, HttpStatus.OK);
 
     }
 
 
-    @RequestMapping(method = RequestMethod.POST, value = "/")
-    public ResponseEntity<Phone> addPhone(@RequestBody Phone phone) {
-        Phone p = phoneService.addPhone(phone);
-        return new ResponseEntity<>(p, HttpStatus.OK);
+    @RequestMapping(method = RequestMethod.POST, value = "/{userid}")
+    public ResponseEntity<Phone> addPhoneForUser(@RequestBody Phone phone, @PathVariable int userid) {
+        Phone p = phoneService.addPhoneForUser(phone, userid);
+        if (p == null)
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        else
+            return new ResponseEntity<>(p, HttpStatus.OK);
 
     }
 

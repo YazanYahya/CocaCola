@@ -20,6 +20,10 @@ public class InventoryService {
     private InventoryRepository inventoryRepository;
 
 
+    public Inventory getInventoryById(int id) {
+        return this.inventoryRepository.findById(id);
+    }
+
     public List<Inventory> getInventory() {
         List<Inventory> inventory = new ArrayList<>();
         inventoryRepository.findAll().forEach(inventory::add);
@@ -28,8 +32,12 @@ public class InventoryService {
 
 
     public Inventory addProductInventory(Inventory inventory, int product_id) {
-        inventory.setProducts(new Product(product_id));
-        return inventoryRepository.save(inventory);
+        if (this.productRepository.findById(product_id) == null)
+            return null;
+        else {
+            inventory.setProducts(new Product(product_id));
+            return inventoryRepository.save(inventory);
+        }
     }
 
 
@@ -39,8 +47,10 @@ public class InventoryService {
 
 
     public Inventory getInventoryByQrcode(String qrcode) {
-
-        int prodductid = getProductByQrcode(qrcode).getId();
+        Product p = getProductByQrcode(qrcode);
+        if (p == null)
+            return null;
+        int prodductid = p.getId();
         return getInventory(prodductid);
     }
 
@@ -51,8 +61,11 @@ public class InventoryService {
 
 
     public Inventory increaseProductQuantity(String qrcode, Inventory inv) {
+        Product p = getProductByQrcode(qrcode);
+        if (p == null)
+            return null;
 
-        int productid = getProductByQrcode(qrcode).getId();
+        int productid = p.getId();
         Inventory inventory = getInventory(productid);
         inventory.setQuantity(inventory.getQuantity() + inv.getQuantity());
         return inventoryRepository.save(inventory);
@@ -60,8 +73,11 @@ public class InventoryService {
 
 
     public Inventory decreaseProductQuantity(String qrcode, Inventory inv) {
+        Product p = getProductByQrcode(qrcode);
+        if (p == null)
+            return null;
 
-        int productid = getProductByQrcode(qrcode).getId();
+        int productid = p.getId();
         Inventory inventory = getInventory(productid);
         int quantity = inv.getQuantity();
         if (inventory.getQuantity() >= quantity) {
@@ -69,5 +85,15 @@ public class InventoryService {
             return inventoryRepository.save(inventory);
         }
         return null;
+    }
+
+    public boolean deleteInventory(int id) {
+
+        if (this.inventoryRepository.findById(id) == null)
+            return false;
+        else {
+            inventoryRepository.deleteById(id);
+            return true;
+        }
     }
 }

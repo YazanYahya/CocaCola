@@ -52,6 +52,14 @@ public class ProductController {
     }
 
 
+    @RequestMapping(value = "/description/{description}")
+    public ResponseEntity<List<Product>> getProductsByDescription(@PathVariable("description") String description) {
+
+        List<Product> products = productService.getProductsByDescription(description);
+        return new ResponseEntity<>(products, HttpStatus.OK);
+    }
+
+
     @RequestMapping(method = RequestMethod.POST, value = "/")
     public ResponseEntity<Product> addProduct(@RequestBody Product product) {
         Product p = productService.addProduct(product);
@@ -64,7 +72,7 @@ public class ProductController {
         product.setId(id);
         Product p = productService.updateProduct(product);
         if (p == null)
-            return new ResponseEntity<>(p, HttpStatus.CONFLICT);
+            return new ResponseEntity<>(p, HttpStatus.NOT_FOUND);
         else
             return new ResponseEntity<>(p, HttpStatus.OK);
     }
@@ -75,7 +83,7 @@ public class ProductController {
         if (productService.deleteProduct(id))
             return new ResponseEntity<>(HttpStatus.OK);
         else
-            return new ResponseEntity<>(HttpStatus.CONFLICT);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
 

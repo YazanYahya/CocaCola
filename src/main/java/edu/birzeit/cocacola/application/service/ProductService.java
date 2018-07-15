@@ -54,5 +54,8 @@ public class ProductService {
         return this.productRepository.findByCategory(category);
     }
 
+    public List<Product> getProductsByDescription(String description) {
+        return this.productRepository.findByDescription(description);
+    }
 
 }

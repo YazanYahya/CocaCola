@@ -9,6 +9,14 @@ import java.util.List;
 @Table(name = "users")
 public class User {
 
+    @Transient
+    public static final int MANAGER_ROLE=2;
+    @Transient
+    public static final int LORI_ROLE=1;
+    @Transient
+    public static final int TRUCK_DRIVER_ROLE=0;
+
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,6 +43,10 @@ public class User {
     @OneToMany(mappedBy = "userLori", cascade = CascadeType.ALL)
     private List<TruckOrder> loriServedOrders;
 
+
+    public User(int id) {
+        this.id = id;
+    }
 
     public User() {
     }

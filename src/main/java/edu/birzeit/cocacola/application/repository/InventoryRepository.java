@@ -7,14 +7,12 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface InventoryRepository extends JpaRepository<Inventory, String> {
+public interface InventoryRepository extends JpaRepository<Inventory, Integer> {
 
-
-    //@Query("UPDATE i FROM inventory i set i.quantity= i.quantity + quantity WHERE i.product_id = :product_id")
-    //void increaseQuantity(@Param("product_id") int product_id, @Param("quantity") int quantity);
 
     Inventory findByProduct_id(int id);
-
+    Inventory findById(int id);
+    void deleteById(int id);
 
 
 }
